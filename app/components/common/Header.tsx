@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { getVariants } from './Variants';
 import { useEffect, useState } from 'react';
+import LoginButton from '../LoginButton';
 
 const Header = ({title, v}: {title: string, v?: number}) => {
 
@@ -34,6 +35,7 @@ const Header = ({title, v}: {title: string, v?: number}) => {
             {isDev && v && <a className="hidden sm:block text-sm" href={`/${v}`}> v{v}</a>}
             {devLinks}
           </div>
+          <LoginButton />
           <div className="flex flex-row justify-between items-center gap-4">
             <span className="hidden sm:inline-block">{devDisplayLinks}</span>
             <div className="text-md pl-6">
