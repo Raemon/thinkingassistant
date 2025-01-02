@@ -29,8 +29,8 @@ const Header = ({title, v}: {title: string, v?: number}) => {
         <div className='flex flex-row justify-between items-center gap-4 text-gray-600 z-10 relative'>
           <div className="flex flex-row justify-between items-center gap-4">
             <Link href="/"><h3 className="uppercase text-md">
-              <span className="text-gray-400">Rationality.</span>
-              <span className="text-gray-400">Training</span>
+              <span className="text-gray-400">Thinking.</span>
+              <span className="text-gray-400">Assistance</span>
             </h3></Link>
             {isDev && v && <a className="hidden sm:block text-sm" href={`/${v}`}> v{v}</a>}
             {devLinks}
