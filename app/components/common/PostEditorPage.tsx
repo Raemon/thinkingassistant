@@ -23,6 +23,8 @@ function PostEditorPage() {
     }
   }, [slug, posts]);
 
+  console.log(selectedPost);
+
   return (
     <div>
       <Header title="Editor" />

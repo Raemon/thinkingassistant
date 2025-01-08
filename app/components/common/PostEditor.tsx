@@ -98,6 +98,7 @@ const PostEditor = ({post, refetch, onSubmit}:{post?:Post, refetch?:()=>void, on
         console.error('Error creating post:', error);
       } finally {
         setIsSubmitting(false);
+        refetch?.();
         onSubmit();
       }
     } else {
@@ -119,6 +120,7 @@ const PostEditor = ({post, refetch, onSubmit}:{post?:Post, refetch?:()=>void, on
         console.error('Error updating post:', error);
       } finally {
         setIsSubmitting(false);
+        refetch?.();
         onSubmit();
       }
     }
@@ -158,13 +160,13 @@ const PostEditor = ({post, refetch, onSubmit}:{post?:Post, refetch?:()=>void, on
           />
         </div>
         <div className="mb-4">
-          {/* <CkEditor
+          <CkEditor
             initialData={content}
             onChange={(data) => setContent(data)}
             config={{
               placeholder: 'Post content'
             }}
-          /> */}
+          />
         </div>
       </form>
     </div>
