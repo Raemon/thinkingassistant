@@ -13,7 +13,7 @@ function PostEditorPage() {
   const { data: posts = [], isLoading, error, refetch } = usePosts();
   const [selectedPost, setSelectedPost] = useState<Post | undefined>(undefined);
   const params = useParams();
-  const slug = params?.slug as string;
+  const slug = params?.postSlug as string;
 
   
 

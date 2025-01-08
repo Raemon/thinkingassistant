@@ -165,7 +165,7 @@ const PostEditor = ({post, refetch, onSubmit}:{post?:Post, refetch?:()=>void, on
           />
         </div>
         <div className="mb-4">
-          {/* {isClient ? (
+          {isClient ? (
             <CkEditor
               initialData={content}
               onChange={(data) => setContent(data)}
@@ -175,7 +175,7 @@ const PostEditor = ({post, refetch, onSubmit}:{post?:Post, refetch?:()=>void, on
             />
           ) : (
             <div className="w-full h-64 bg-gray-50 animate-pulse rounded" />
-          )} */}
+          )}
         </div>
       </form>
     </div>
