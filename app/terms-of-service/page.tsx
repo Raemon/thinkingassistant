@@ -18,7 +18,12 @@ export default function TermsOfService() {
 
         <section>
           <h2 className="text-xl font-semibold mb-3">2. Description of Service</h2>
-          <p>Our application provides [brief description of your app's primary function] using Google authentication for secure access.</p>
+          <p>Our application includes:</p>
+          <ul>
+            <li>A writing tool with AI assistance.</li>
+            <li>A platform for knowledge workers to hire cognitive assistants, who help them stay focused and think through difficult problems.</li>
+            <li>We use Google OAuth as one of our authentication methods.</li>
+          </ul>
         </section>
 
         <section>

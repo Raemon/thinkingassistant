@@ -22,6 +22,7 @@ export const generateSlug = (title: string) => {
 const PostEditor = ({post, refetch, onSubmit}:{post?:Post, refetch?:()=>void, onSubmit:()=>void}) => {
   const editing = post ? true : false;
   const postData = post || {title: '', html: ''}; 
+  const [isClient, setIsClient] = useState(false);
   const [title, setTitle] = useState(postData.title);
   const [content, setContent] = useState(postData.html);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,6 +61,10 @@ const PostEditor = ({post, refetch, onSubmit}:{post?:Post, refetch?:()=>void, on
     setTitle(post?.title || '');
     setContent(post?.html || '');
   }, [post]);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -160,13 +165,17 @@ const PostEditor = ({post, refetch, onSubmit}:{post?:Post, refetch?:()=>void, on
           />
         </div>
         <div className="mb-4">
-          <CkEditor
-            initialData={content}
-            onChange={(data) => setContent(data)}
-            config={{
-              placeholder: 'Post content'
-            }}
-          />
+          {/* {isClient ? (
+            <CkEditor
+              initialData={content}
+              onChange={(data) => setContent(data)}
+              config={{
+                placeholder: 'Post content'
+              }}
+            />
+          ) : (
+            <div className="w-full h-64 bg-gray-50 animate-pulse rounded" />
+          )} */}
         </div>
       </form>
     </div>
