@@ -7,6 +7,7 @@ import { usePost } from "@/app/hooks/usePost";
 
 function PostDisplay({postSlug}:{postSlug:string}) {
   const [edit, setEdit] = useState(false)
+  const [isDev, setIsDev] = useState(false)
   const { data: post, isLoading, error, refetch } = usePost(postSlug);
   
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,10 +20,12 @@ function PostDisplay({postSlug}:{postSlug:string}) {
 //     updatedAt: new Date(cachedPost?.updatedAt ?? ''),
 //   }
 
-  const isDev = window.location.href.includes('localhost');  
+  useEffect(() => {
+    setIsDev(window.location.hostname.includes('localhost'));
+  }, []);
 
   const handleDoubleClick = async (newEdit:boolean) => {
-    if (!window.location.href.includes('localhost')) return;
+    if (!isDev) return;
     setEdit(newEdit)
   }
 
