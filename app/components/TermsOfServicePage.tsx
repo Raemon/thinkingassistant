@@ -3,10 +3,10 @@
 import Layout from "../components/common/Layout";
 import PostDisplay from "../components/common/PostDisplay";
 
-export default function TermsOfServicePage() {
+export default function TermsOfServicePage({ post }: { post: Post }) {
   return (
     <Layout>
-      <PostDisplay postSlug="terms-of-service" />
+      <PostDisplay post={post} />
     </Layout>
   );
 }

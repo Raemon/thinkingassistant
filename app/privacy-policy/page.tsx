@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { PrismaClient } from '@prisma/client';
+import { Post, PrismaClient } from '@prisma/client';
 import { unstable_cache } from 'next/cache';
 import PrivacyPolicyPage from '../components/PrivacyPolicyPage';
 
@@ -15,22 +15,18 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-// Cache the database query
-const getPost = unstable_cache(
-  async () => {
-    return await prisma.post.findUnique({
-      where: { slug: 'privacy-policy' }
-    });
-  },
-  ['privacy-policy-post'], // cache key
-  { revalidate: 3600 } // revalidate every hour
-);
+async function getPost() {
+  return await prisma.post.findUnique({
+    where: { slug: 'privacy-policy' }
+  });
+}
 
 // This file is the server-side rendering component.
 // PrivacyPolicyPage is the client-side component.
 // This separation allows for SSR while keeping the client-side interactive.
-export default function Page() {
+export default async function Page() {
+  const post = await getPost();
   return (
-    <PrivacyPolicyPage />
+    <PrivacyPolicyPage post={post as Post} />
   )
 }

@@ -4,11 +4,14 @@ import Link from 'next/link'
 // import { postCacheData } from '../../../postCacheData'; 
 // import { Post } from "@prisma/client";
 import { usePost } from "@/app/hooks/usePost";
+import { Post } from "@prisma/client";
 
-function PostDisplay({postSlug}:{postSlug:string}) {
+function PostDisplay({post}:{post:Post}) {
   const [edit, setEdit] = useState(false)
   const [isDev, setIsDev] = useState(false)
-  const { data: post, isLoading, error, refetch } = usePost(postSlug);
+  const { data: newPost, isLoading, error, refetch } = usePost(post.slug);
+
+  const renderedPost = newPost ?? post;
   
   const containerRef = useRef<HTMLDivElement>(null);
 
