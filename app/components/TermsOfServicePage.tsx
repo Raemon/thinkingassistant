@@ -1,5 +1,6 @@
 'use client';
 
+import { Post } from "@prisma/client";
 import Layout from "../components/common/Layout";
 import PostDisplay from "../components/common/PostDisplay";
 
